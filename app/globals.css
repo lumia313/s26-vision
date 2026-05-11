@@ -1,0 +1,26 @@
+import { Metadata } from 'next'
+import Script from 'next/script'
+import Navbar from '@/components/ui/Navbar'
+import Hero from '@/components/ui/Hero'  // Client boundary ici
+
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-gradient-to-b from-neutral-white to-gray-50">
+        <Hero />
+      </main>
+      <Script id="json-ld" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "Samsung Galaxy S26 Ultra",
+          image: "/s26-ultra.jpg",
+          description: "Flagship 2026 avec Galaxy AI Gen 3.",
+          brand: { "@type": "Brand", name: "Samsung" },
+          offers: { "@type": "Offer", availability: "https://schema.org/PreOrder" }
+        })}
+      </Script>
+    </>
+  )
+         }
